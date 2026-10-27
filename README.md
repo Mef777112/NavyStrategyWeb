@@ -1,12 +1,14 @@
-# NavyStrategy browser playtest
+# NavyStrategy online WebGPU playtest
 
-Built Unity WebGL player for gameplay and performance testing.
+https://mef777112.github.io/NavyStrategyWeb/?online=3
 
-https://Mef777112.github.io/NavyStrategyWeb/
+Requires a desktop browser and GPU with WebGPU support. Uses the PC render pipeline,
+including the same island scene and Crest ocean. Create a named room, choose USA or Iran,
+let the other player join from the room list, then start the battle as host.
+The other player is automatically assigned the opposite side.
 
-Open in a current desktop browser, wait for the download and select the single-player game.
-The room/UDP multiplayer transport requires the native PC build and is unavailable in this browser build.
+The browser can host the authoritative Unity NetCode simulation. Browser and desktop
+clients use an authenticated WSS packet relay through the existing room server.
 
-Large binary assets are split for Git storage. GitHub Actions verifies their checksums,
-reconstructs them and publishes the complete player to GitHub Pages.
-This repository contains only the built player; it does not contain the Unity project sources.
+This repository contains only the built player. Binary asset chunks are verified and
+reassembled by GitHub Actions before GitHub Pages publication.
