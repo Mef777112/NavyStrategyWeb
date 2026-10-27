@@ -1,0 +1,13 @@
+[
+  {
+    "file": "Build/Player.data.unityweb",
+    "parts": [
+      "Build/Player.data.unityweb.part000",
+      "Build/Player.data.unityweb.part001",
+      "Build/Player.data.unityweb.part002",
+      "Build/Player.data.unityweb.part003",
+      "Build/Player.data.unityweb.part004"
+    ],
+    "sha256": "1b2858b2a27784cdce010ec8afbfa1ca491ccdaab697cb4a62c7a806b36470dd"
+  }
+]
