@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>NavyStrategy — проверка игры</title>
+    <title>NavyStrategy — сетевая игра · WebGPU</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css?v=2">
+    <link rel="stylesheet" href="TemplateData/style.css?online=3">
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
@@ -13,7 +13,7 @@
         <canvas id="unity-canvas" width="960" height="600" tabindex="-1"></canvas>
         <div id="unity-loading-container">
           <div id="unity-loading-bar">
-            <div id="unity-logo"></div><div id="load-status" style="color: white; font: 14px sans-serif; text-align: center; width: 320px; margin-left: -83px; padding: 12px 0;">Загрузка игры · первый запуск около 200 МБ</div>
+            <div id="unity-logo"></div><div id="load-status" style="color:white;font:14px sans-serif;text-align:center;width:320px;margin-left:-83px;padding:12px 0;">Сетевая версия WebGPU · загрузка около 260 МБ</div>
             <div id="unity-progress-bar-empty">
               <div id="unity-progress-bar-full"></div>
             </div>
@@ -24,7 +24,7 @@
       <div id="unity-footer">
         <div id="unity-logo-title-footer"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">NavyStrategy · одиночная игра</div>
+        <div id="unity-build-title">NavyStrategy · сетевая игра · WebGPU</div>
       </div>
     </div>
     <script>
@@ -60,9 +60,9 @@
       var loaderUrl = buildUrl + "/Player.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/Player.data.unityweb",
-        frameworkUrl: buildUrl + "/Player.framework.js.unityweb",
-        codeUrl: buildUrl + "/Player.wasm.unityweb",
+        dataUrl: buildUrl + "/Player.data.unityweb?online=3",
+        frameworkUrl: buildUrl + "/Player.framework.js.unityweb?online=3",
+        codeUrl: buildUrl + "/Player.wasm.unityweb?online=3",
         streamingAssetsUrl: "StreamingAssets",
 
         // If you have a custom web site structure, or want to place multiple Unity build instances on the same page,
@@ -116,19 +116,20 @@
       } else {
         // Desktop style: Render the game canvas container in a window that can be maximized to fullscreen:
         function fitPlayer() {
-          const width = Math.max(320, Math.min(window.innerWidth, 1600));
-          const height = Math.max(240, Math.min(window.innerHeight - 42, width * 9 / 16));
-          fullscreenContainer.style.width = width + "px";
-          fullscreenContainer.style.height = height + "px";
+          fullscreenContainer.style.width = Math.max(320, window.innerWidth) + "px";
+          fullscreenContainer.style.height = Math.max(240, window.innerHeight - 42) + "px";
         }
-        fitPlayer();
-        window.addEventListener("resize", fitPlayer);
+        fitPlayer(); window.addEventListener("resize", fitPlayer);
       }
 
 
       var script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {
+        if (!navigator.gpu) {
+          unityShowBanner("Для этой версии нужен WebGPU. Откройте игру в актуальном Chrome, Edge или Safari с поддержкой WebGPU.", "error");
+          return;
+        }
         const loadingContainer = document.querySelector("#unity-loading-container");
         const progressBarFull = document.querySelector("#unity-progress-bar-full");
 
@@ -136,7 +137,7 @@
           if (progress < 1) {
             loadingContainer.style.display = "block";
             progressBarFull.style.width = 100 * progress + "%";
-            document.querySelector("#load-status").textContent = "Загрузка игры: " + Math.round(progress * 100) + "% · около 200 МБ";
+            document.querySelector("#load-status").textContent = "Сетевая версия: " + Math.round(progress * 100) + "% · около 260 МБ";
           } else {
             loadingContainer.style.display = "none";
           }

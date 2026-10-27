@@ -19,4 +19,5 @@ body { padding: 0; margin: 0 }
 
 body { background: #080c10; color: #d8e2e7; overflow: hidden; }
 #unity-footer { height: 38px; }
-#unity-build-title { font-size: 14px; }
+#unity-build-title { font-size: 13px; }
+#unity-warning { z-index: 999; max-width: 540px; width: calc(100% - 32px); font: 14px sans-serif; }
