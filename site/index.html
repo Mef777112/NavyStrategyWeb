@@ -5,15 +5,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>NavyStrategy — сетевая игра · WebGPU</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css?online=10">
+    <link rel="stylesheet" href="TemplateData/style.css?build=20261029-gpu-soldiers-1">
   </head>
-  <body>
+  <body><div style="position:fixed;bottom:4px;left:6px;z-index:9999;pointer-events:none;font:10px monospace;color:#b4c2cf;background:#1119;padding:2px 5px">20261029-gpu-soldiers-1</div>
     <div id="unity-container" class="unity-desktop">
       <div id="unity-fullscreen-container">
         <canvas id="unity-canvas" width="960" height="600" tabindex="-1"></canvas>
         <div id="unity-loading-container">
           <div id="unity-loading-bar">
-            <div id="unity-logo"></div><div id="load-status" style="color:white;font:14px sans-serif;text-align:center;width:320px;margin-left:-83px;padding:12px 0;">Сетевая версия WebGPU · загрузка около 260 МБ</div>
+            <div id="unity-logo"></div><div id="load-status" style="color:white;font:14px sans-serif;text-align:center;width:320px;margin-left:-83px;padding:12px 0;">Сетевая версия WebGPU · загрузка около 156 МиБ</div>
             <div id="unity-progress-bar-empty">
               <div id="unity-progress-bar-full"></div>
             </div>
@@ -24,10 +24,18 @@
       <div id="unity-footer">
         <div id="unity-logo-title-footer"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">NavyStrategy · сетевая игра · WebGPU</div>
+        <div id="unity-build-title">NavyStrategy · 20261029-gpu-soldiers-1 · WebGPU</div>
       </div>
     </div>
     <script>
+      window.addEventListener("error", event => { const area=document.querySelector("#unity-warning"); const line=document.createElement("div"); line.textContent="Ошибка: "+event.message; line.style.cssText="background:#812d2d;color:white;padding:10px"; area.appendChild(line); area.style.display="block"; });
+      window.addEventListener("unhandledrejection", event => {
+        const area = document.querySelector("#unity-warning");
+        const line = document.createElement("div");
+        line.textContent = "Ошибка запуска: " + String(event.reason);
+        line.style.cssText = "background:#812d2d;color:white;padding:10px;white-space:pre-wrap";
+        area.appendChild(line); area.style.display = "block";
+      });
       let canvas = document.querySelector("#unity-canvas");
       let fullscreenContainer = document.querySelector("#unity-fullscreen-container");
 
@@ -57,12 +65,12 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/Player.loader.js?online=10";
+      var loaderUrl = buildUrl + "/Player.loader.js?build=20261029-gpu-soldiers-1";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/Player.data.unityweb?online=10",
-        frameworkUrl: buildUrl + "/Player.framework.js.unityweb?online=10",
-        codeUrl: buildUrl + "/Player.wasm.unityweb?online=10",
+        dataUrl: buildUrl + "/Player.data.unityweb?build=20261029-gpu-soldiers-1",
+        frameworkUrl: buildUrl + "/Player.framework.js.unityweb?build=20261029-gpu-soldiers-1",
+        codeUrl: buildUrl + "/Player.wasm.unityweb?build=20261029-gpu-soldiers-1",
         streamingAssetsUrl: "StreamingAssets",
 
         // If you have a custom web site structure, or want to place multiple Unity build instances on the same page,
@@ -110,7 +118,7 @@
 
         // To lower canvas resolution on mobile devices to gain some
         // performance, uncomment the following line:
-        // config.devicePixelRatio = 1;
+        config.devicePixelRatio = 1;
 
 
       } else {
@@ -125,6 +133,7 @@
 
       var script = document.createElement("script");
       script.src = loaderUrl;
+      script.onerror = () => unityShowBanner("Ошибка загрузки файлов игры. Обновите страницу.", "error");
       script.onload = () => {
         if (!navigator.gpu) {
           unityShowBanner("Для этой версии нужен WebGPU. Откройте игру в актуальном Chrome, Edge или Safari с поддержкой WebGPU.", "error");
@@ -137,7 +146,7 @@
           if (progress < 1) {
             loadingContainer.style.display = "block";
             progressBarFull.style.width = 100 * progress + "%";
-            document.querySelector("#load-status").textContent = "Сетевая версия: " + Math.round(progress * 100) + "% · около 260 МБ";
+            document.querySelector("#load-status").textContent = "Сетевая версия: " + Math.round(progress * 100) + "% · около 156 МиБ";
           } else {
             loadingContainer.style.display = "none";
           }
@@ -147,7 +156,7 @@
                 };
 
               }).catch((message) => {
-                alert(message);
+                unityShowBanner("Не удалось запустить игру: " + String(message), "error"); console.error(message);
               });
             };
 

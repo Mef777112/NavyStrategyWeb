@@ -1,0 +1,8 @@
+{
+  "build": "20261029-gpu-soldiers-1",
+  "date": "2026-10-29",
+  "graphics": "WebGPU",
+  "mobileDevicePixelRatio": 1,
+  "playerBytes": 163947255,
+  "gpuSoldierConfigs": 16
+}
