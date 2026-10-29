@@ -1,8 +1,14 @@
 {
-  "build": "20261029-gpu-soldiers-1",
+  "build": "20261029-battle-fixes-1",
   "date": "2026-10-29",
   "graphics": "WebGPU",
   "mobileDevicePixelRatio": 1,
-  "playerBytes": 163947255,
-  "gpuSoldierConfigs": 16
+  "playerBytes": 163938495,
+  "gpuSoldierConfigs": 16,
+  "gpuPageCapacity": 128,
+  "fixes": [
+    "per-purchase-aviation-destinations",
+    "stable-soldier-pose-slots",
+    "fixed-render-visible-gpu-buffers"
+  ]
 }
