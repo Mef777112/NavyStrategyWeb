@@ -4,9 +4,8 @@
     "parts": [
       "Build/Player.data.unityweb.part000",
       "Build/Player.data.unityweb.part001",
-      "Build/Player.data.unityweb.part002",
-      "Build/Player.data.unityweb.part003"
+      "Build/Player.data.unityweb.part002"
     ],
-    "sha256": "9168fdb5cc0594066148c93d499d32ac2b8e3f0883905e1eb7508bfaf77f44fb"
+    "sha256": "786e721a8ba10adbf3c852c2689be287883e5903e81c8c7bba4d10987daf326b"
   }
 ]
