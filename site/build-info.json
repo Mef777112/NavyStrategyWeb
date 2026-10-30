@@ -1,9 +1,9 @@
 {
-  "build": "20261030-transport-refactor-1",
+  "build": "20261030-size-test-1",
   "date": "2026-10-30",
   "graphics": "WebGPU",
   "mobileDevicePixelRatio": 1,
-  "playerBytes": 127979358,
+  "playerBytes": 116838361,
   "gpuSoldierConfigs": 16,
   "gpuPageCapacity": 128,
   "fixes": [

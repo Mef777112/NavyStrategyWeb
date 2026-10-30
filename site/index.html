@@ -5,15 +5,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>NavyStrategy — сетевая игра · WebGPU</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css?build=20261030-transport-refactor-1">
+    <link rel="stylesheet" href="TemplateData/style.css?build=20261030-size-test-1">
   </head>
-  <body><div style="position:fixed;bottom:4px;left:6px;z-index:9999;pointer-events:none;font:10px monospace;color:#b4c2cf;background:#1119;padding:2px 5px">20261030-transport-refactor-1</div>
+  <body><div style="position:fixed;bottom:4px;left:6px;z-index:9999;pointer-events:none;font:10px monospace;color:#b4c2cf;background:#1119;padding:2px 5px">20261030-size-test-1</div>
     <div id="unity-container" class="unity-desktop">
       <div id="unity-fullscreen-container">
         <canvas id="unity-canvas" width="960" height="600" tabindex="-1"></canvas>
         <div id="unity-loading-container">
           <div id="unity-loading-bar">
-            <div id="unity-logo"></div><div id="load-status" style="color:white;font:14px sans-serif;text-align:center;width:320px;margin-left:-83px;padding:12px 0;">Сетевая версия WebGPU · загрузка около 122 МиБ</div>
+            <div id="unity-logo"></div><div id="load-status" style="color:white;font:14px sans-serif;text-align:center;width:320px;margin-left:-83px;padding:12px 0;">Сетевая версия WebGPU · загрузка около 111 МиБ</div>
             <div id="unity-progress-bar-empty">
               <div id="unity-progress-bar-full"></div>
             </div>
@@ -24,7 +24,7 @@
       <div id="unity-footer">
         <div id="unity-logo-title-footer"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">NavyStrategy · 20261030-transport-refactor-1 · WebGPU</div>
+        <div id="unity-build-title">NavyStrategy · 20261030-size-test-1 · WebGPU</div>
       </div>
     </div>
     <script>
@@ -65,12 +65,12 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/Player.loader.js?build=20261030-transport-refactor-1";
+      var loaderUrl = buildUrl + "/Player.loader.js?build=20261030-size-test-1";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/Player.data.unityweb?build=20261030-transport-refactor-1",
-        frameworkUrl: buildUrl + "/Player.framework.js.unityweb?build=20261030-transport-refactor-1",
-        codeUrl: buildUrl + "/Player.wasm.unityweb?build=20261030-transport-refactor-1",
+        dataUrl: buildUrl + "/Player.data.unityweb?build=20261030-size-test-1",
+        frameworkUrl: buildUrl + "/Player.framework.js.unityweb?build=20261030-size-test-1",
+        codeUrl: buildUrl + "/Player.wasm.unityweb?build=20261030-size-test-1",
         streamingAssetsUrl: "StreamingAssets",
 
         // If you have a custom web site structure, or want to place multiple Unity build instances on the same page,
@@ -146,7 +146,7 @@
           if (progress < 1) {
             loadingContainer.style.display = "block";
             progressBarFull.style.width = 100 * progress + "%";
-            document.querySelector("#load-status").textContent = "Сетевая версия: " + Math.round(progress * 100) + "% · около 122 МиБ";
+            document.querySelector("#load-status").textContent = "Сетевая версия: " + Math.round(progress * 100) + "% · около 111 МиБ";
           } else {
             loadingContainer.style.display = "none";
           }
