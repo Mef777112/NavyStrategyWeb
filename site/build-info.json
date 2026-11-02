@@ -1,9 +1,9 @@
 {
-  "build": "20261102-threads-gzip-1",
+  "build": "20261102-net-traffic-1",
   "date": "2026-11-02",
   "graphics": "WebGPU",
   "mobileDevicePixelRatio": 1,
-  "playerBytes": 60469014,
+  "playerBytes": 60527957,
   "gpuSoldierConfigs": 16,
   "gpuPageCapacity": 128,
   "fixes": [
@@ -18,7 +18,10 @@
   "changes": [
     "procedural-wreck-surfaces",
     "shared-iran-infantry-atlas",
-    "startup-procedural-sunset-sky"
+    "startup-procedural-sunset-sky",
+    "network-traffic-cut-10hz-snapshots",
+    "client-side-soldier-animation",
+    "nettest-relay-kibps"
   ],
   "generatedSkyResolution": [
     4096,
